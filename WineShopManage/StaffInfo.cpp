@@ -5,6 +5,7 @@
 #include "WineShopManage.h"
 #include "StaffInfo.h"
 #include "afxdialogex.h"
+#include "DBOperation.h"
 
 
 // CStaffInfo 对话框
@@ -62,5 +63,49 @@ void CStaffInfo::OnPaint()
 	// 不为绘图消息调用 CDialogEx::OnPaint()
 	CWineShopManageApp *pApp = (CWineShopManageApp*)AfxGetApp();
 	m_sEno = pApp->staff.getEno();
+	CDBOperation dbOper;
+
+	bool bConn = dbOper.ConnToDB("Provider=OraOLEDB.Oracle;Persist Security Info=True;DataSource=\"(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = 183.175.14.198)(PORT = 7360)))(CONNECT_DATA =(SERVICE_NAME = OrHotel))\"","USER _5_4_2","123456");
+
+	if (bConn == false){
+		printf("连接据库出错\n");
+		system("pause");
+		return;
+	}
+	printf("数据库连接成功!\n");
+	_RecordsetPtr pRst;
+
+	char sql[255] = { 0 };
+	//执行查询语句
+	strcpy_s(sql, "select * from emp_job where eno = 1234");
+
+	pRst = dbOper.ExecuteWithResSQL(sql);
+
+	if (pRst == NULL){
+		printf("查询数据出现错误！\n");
+		system("pause");
+		return;
+	}
+	if (pRst->adoEOF){
+		pRst->Close();
+		printf("There is no records in this table\n");
+		system("pause");
+		return;
+	}
+	printf("正在查询...\n");
+
+	_variant_t eno, ename, job, dept, jobinfo, jobenv, jobtime;
+
+	while (!pRst->adoEOF){
+		//eno = pRst->GetCollect(_variant_t((long)0));
+		ename = pRst->GetCollect(_variant_t("ename"));
+		job = pRst->GetCollect(_variant_t("job"));
+		jobinfo = pRst->GetCollect(_variant_t("jobinfo"));
+		jobenv = pRst->GetCollect(_variant_t("jobenv"));
+		jobtime = pRst->GetCollect(_variant_t("jobtime"));
+		printf("%s\t%s\t%s\t%s\t%s\t%s\n",(LPSTR)(LPCSTR)(_bstr_t)ename, (LPSTR)(LPCSTR)_bstr_t(job),(LPSTR)(LPCSTR)_bstr_t(dept),(LPSTR)(LPCSTR)(_bstr_t)jobinfo,(LPSTR)(LPCSTR)(_bstr_t)jobenv, (LPSTR)(LPCSTR)(_bstr_t)jobtime);
+		pRst->MoveNext();
+	}
+
 	UpdateData(FALSE);
 }

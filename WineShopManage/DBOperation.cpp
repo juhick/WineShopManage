@@ -37,18 +37,18 @@ bool CDBOperation::ConnToDB(char * ConnectionString, char * UserID, char * Passw
 {
 	if (NULL ==m_pConnection)
 	{
-		printf("Failedto create connection\n");
+		printf("Failed to create connection\n");
 		return false;
 	}
 
 	try
 	{
-		HRESULT hr =m_pConnection->Open(ConnectionString, UserID, Password, NULL);
-		if (TRUE== FAILED(hr))
+		HRESULT hr = m_pConnection->Open(ConnectionString, UserID, Password, NULL);
+		if (TRUE == FAILED(hr))
 		{
 			return false;
 		}
-		m_pCommand->ActiveConnection =m_pConnection;
+		m_pCommand->ActiveConnection = m_pConnection;
 		return true;
 	}
 	catch(_com_error &e)
