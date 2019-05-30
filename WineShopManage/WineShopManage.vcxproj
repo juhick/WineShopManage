@@ -22,6 +22,7 @@
     <ProjectGuid>{DDFF0D5D-E890-4868-BBB8-2C8BF4865A60}</ProjectGuid>
     <RootNamespace>WineShopManage</RootNamespace>
     <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -29,12 +30,14 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -42,6 +45,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -49,6 +53,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -178,21 +183,37 @@
     <None Include="res\WineShopManage.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AttendCountShow.h" />
     <ClInclude Include="DBOperation.h" />
+    <ClInclude Include="Financialmanage.h" />
+    <ClInclude Include="FinInfoCount.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ShowOtherInfoDlg.h" />
     <ClInclude Include="Staff.h" />
+    <ClInclude Include="StaffAttend.h" />
+    <ClInclude Include="StaffAttendManage.h" />
+    <ClInclude Include="StaffFinInfo.h" />
     <ClInclude Include="StaffInfo.h" />
     <ClInclude Include="StaffMvDlg.h" />
+    <ClInclude Include="StaffOtherInfo.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WineShopManage.h" />
     <ClInclude Include="WineShopManageDlg.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AttendCountShow.cpp" />
     <ClCompile Include="DBOperation.cpp" />
+    <ClCompile Include="Financialmanage.cpp" />
+    <ClCompile Include="FinInfoCount.cpp" />
+    <ClCompile Include="ShowOtherInfoDlg.cpp" />
     <ClCompile Include="Staff.cpp" />
+    <ClCompile Include="StaffAttend.cpp" />
+    <ClCompile Include="StaffAttendManage.cpp" />
+    <ClCompile Include="StaffFinInfo.cpp" />
     <ClCompile Include="StaffInfo.cpp" />
     <ClCompile Include="StaffMvDlg.cpp" />
+    <ClCompile Include="StaffOtherInfo.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

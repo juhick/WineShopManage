@@ -1,0 +1,38 @@
+﻿生成启动时间为 2019/5/22 18:00:54。
+     1>项目“D:\Github\WineShopManage\WineShopManage\WineShopManage.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“x64\Release\WineShopManage.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         d:\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _MBCS /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"x64\Release\WineShopManage.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         d:\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _MBCS /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"x64\Release\WineShopManage.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt DBOperation.cpp Staff.cpp StaffInfo.cpp StaffMvDlg.cpp WineShopManage.cpp WineShopManageDlg.cpp
+         DBOperation.cpp
+         Staff.cpp
+         StaffInfo.cpp
+         StaffMvDlg.cpp
+         WineShopManage.cpp
+         WineShopManageDlg.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       Link:
+         d:\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\WineShopManage\x64\Release\WineShopManage.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"x64\Release\WineShopManage.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Github\WineShopManage\x64\Release\WineShopManage.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\WineShopManage\x64\Release\WineShopManage.lib" /MACHINE:X64 x64\Release\WineShopManage.res
+         x64\Release\DBOperation.obj
+         x64\Release\Staff.obj
+         x64\Release\StaffInfo.obj
+         x64\Release\StaffMvDlg.obj
+         x64\Release\stdafx.obj
+         x64\Release\WineShopManage.obj
+         x64\Release\WineShopManageDlg.obj
+         正在生成代码
+         已完成代码的生成
+         WineShopManage.vcxproj -> D:\Github\WineShopManage\x64\Release\WineShopManage.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Github\WineShopManage\x64\Release\WineShopManage.exe;#1" /manifest x64\Release\WineShopManage.exe.intermediate.manifest "d:\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       FinalizeBuildStatus:
+         正在删除文件“x64\Release\WineShopManage.unsuccessfulbuild”。
+         正在对“x64\Release\WineShopManage.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\Github\WineShopManage\WineShopManage\WineShopManage.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:09.27

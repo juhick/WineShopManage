@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "WineShopManage.h"
 #include "WineShopManageDlg.h"
+#include "DBOperation.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -39,6 +40,37 @@ CWineShopManageApp theApp;
 
 BOOL CWineShopManageApp::InitInstance()
 {
+	AfxOleInit();
+
+	CStdioFile dbconfig;
+
+	CFileException fileException;
+
+	CString m_sPwd, m_sUid, m_sSid;
+	CString path = ("dbconfig.txt");
+
+	if(dbconfig.Open(path, CFile::modeRead, &fileException))
+	{
+		dbconfig.ReadString(m_sPwd);
+		dbconfig.ReadString(m_sUid);
+		dbconfig.ReadString(m_sSid);
+	}
+	else{
+		TRACE("Can't open file %s, error = %u\n", path, fileException.m_cause);
+	}
+
+	dbconfig.Close();
+
+	CString strConnect;
+	strConnect.Format("Provider=OraOLEDB.Oracle.1;Password=%s;Persist Security Info=True;User ID=%s;Data Source=%s",m_sPwd, m_sUid, m_sSid);
+
+	bool bConn = dbOper.ConnToDB((_bstr_t)strConnect, (_bstr_t)m_sUid, (_bstr_t)m_sPwd);
+
+	if (false == bConn)
+	{
+		AfxMessageBox("连接数据库出现错误\n");
+	}
+
 	// 如果一个运行在 Windows XP 上的应用程序清单指定要
 	// 使用 ComCtl32.dll 版本 6 或更高版本来启用可视化方式，
 	//则需要 InitCommonControlsEx()。否则，将无法创建窗口。
@@ -89,6 +121,7 @@ BOOL CWineShopManageApp::InitInstance()
 
 	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，
 	//  而不是启动应用程序的消息泵。
+
 	return FALSE;
 }
 

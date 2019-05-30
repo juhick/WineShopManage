@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ReadMe.txt" />
     <None Include="res\WineShopManage.rc2">
       <Filter>资源文件</Filter>
     </None>
     <None Include="res\WineShopManage.ico">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WineShopManage.h">
@@ -51,6 +51,30 @@
     <ClInclude Include="DBOperation.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="StaffOtherInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowOtherInfoDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffAttendManage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffAttend.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AttendCountShow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Financialmanage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffFinInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FinInfoCount.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WineShopManage.cpp">
@@ -72,6 +96,30 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DBOperation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffOtherInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowOtherInfoDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffAttendManage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffAttend.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AttendCountShow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Financialmanage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffFinInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FinInfoCount.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

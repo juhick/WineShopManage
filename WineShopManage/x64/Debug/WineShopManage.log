@@ -1,48 +1,39 @@
-﻿生成启动时间为 2019/5/21 16:34:19。
+﻿生成启动时间为 2019/5/30 14:33:09。
      1>项目“D:\Github\WineShopManage\WineShopManage\WineShopManage.vcxproj”在节点 2 上(build 个目标)。
-     1>PrepareForBuild:
-         正在创建目录“D:\Github\WineShopManage\x64\Debug\”。
-       InitializeBuildStatus:
+     1>InitializeBuildStatus:
          正在创建“x64\Debug\WineShopManage.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         d:\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"x64\Debug\WineShopManage.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         d:\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"x64\Debug\WineShopManage.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt DBOperation.cpp Staff.cpp StaffInfo.cpp StaffMvDlg.cpp WineShopManage.cpp WineShopManageDlg.cpp
-         WineShopManageDlg.cpp
-         WineShopManage.cpp
-         StaffMvDlg.cpp
-         StaffInfo.cpp
-         Staff.cpp
-         DBOperation.cpp
-         Generating Code...
+         所有输出均为最新。
+         d:\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"x64\Debug\WineShopManage.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt FinInfoCount.cpp
+         FinInfoCount.cpp
        ResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _DEBUG /D _AFXDLL /l"0x0804" /Ix64\Debug\ /nologo /fo"x64\Debug\WineShopManage.res" WineShopManage.rc 
+         所有输出均为最新。
        ManifestResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"x64\Debug\WineShopManage.exe.embed.manifest.res" x64\Debug\WineShopManage_manifest.rc 
+         所有输出均为最新。
        Link:
          d:\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\WineShopManage\x64\Debug\WineShopManage.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"x64\Debug\WineShopManage.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Github\WineShopManage\x64\Debug\WineShopManage.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\WineShopManage\x64\Debug\WineShopManage.lib" /MACHINE:X64 x64\Debug\WineShopManage.res
          x64\Debug\WineShopManage.exe.embed.manifest.res
+         x64\Debug\AttendCountShow.obj
          x64\Debug\DBOperation.obj
+         x64\Debug\Financialmanage.obj
+         x64\Debug\FinInfoCount.obj
+         x64\Debug\ShowOtherInfoDlg.obj
          x64\Debug\Staff.obj
+         x64\Debug\StaffAttend.obj
+         x64\Debug\StaffAttendManage.obj
+         x64\Debug\StaffFinInfo.obj
          x64\Debug\StaffInfo.obj
          x64\Debug\StaffMvDlg.obj
+         x64\Debug\StaffOtherInfo.obj
          x64\Debug\stdafx.obj
          x64\Debug\WineShopManage.obj
          x64\Debug\WineShopManageDlg.obj
          WineShopManage.vcxproj -> D:\Github\WineShopManage\x64\Debug\WineShopManage.exe
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"x64\Debug\WineShopManage.exe.embed.manifest" /manifest x64\Debug\WineShopManage.exe.intermediate.manifest "d:\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"x64\Debug\WineShopManage.exe.embed.manifest.res" x64\Debug\WineShopManage_manifest.rc 
+         所有输出均为最新。
        LinkEmbedManifest:
-         d:\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\WineShopManage\x64\Debug\WineShopManage.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"x64\Debug\WineShopManage.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Github\WineShopManage\x64\Debug\WineShopManage.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\WineShopManage\x64\Debug\WineShopManage.lib" /MACHINE:X64 x64\Debug\WineShopManage.res
-         x64\Debug\WineShopManage.exe.embed.manifest.res
-         x64\Debug\DBOperation.obj
-         x64\Debug\Staff.obj
-         x64\Debug\StaffInfo.obj
-         x64\Debug\StaffMvDlg.obj
-         x64\Debug\stdafx.obj
-         x64\Debug\WineShopManage.obj
-         x64\Debug\WineShopManageDlg.obj
+         所有输出均为最新。
          WineShopManage.vcxproj -> D:\Github\WineShopManage\x64\Debug\WineShopManage.exe
        FinalizeBuildStatus:
          正在删除文件“x64\Debug\WineShopManage.unsuccessfulbuild”。
@@ -51,4 +42,4 @@
 
 生成成功。
 
-已用时间 00:00:06.80
+已用时间 00:00:00.55

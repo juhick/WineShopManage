@@ -7,6 +7,8 @@
 #include "WineShopManageDlg.h"
 #include "afxdialogex.h"
 #include "StaffMvDlg.h"
+#include "StaffAttend.h"
+#include "Financialmanage.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -69,6 +71,8 @@ BEGIN_MESSAGE_MAP(CWineShopManageDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 //	ON_BN_CLICKED(IDC_BUTTON1, &CWineShopManageDlg::OnBnClickedButton1)
 ON_BN_CLICKED(IDC_STAFFMVBT, &CWineShopManageDlg::OnBnClickedStaffmvbt)
+ON_BN_CLICKED(IDC_AttendInfoManage, &CWineShopManageDlg::OnBnClickedAttendinfomanage)
+ON_BN_CLICKED(IDC_FINANCIAL, &CWineShopManageDlg::OnBnClickedFinancial)
 END_MESSAGE_MAP()
 
 
@@ -163,5 +167,21 @@ void CWineShopManageDlg::OnBnClickedStaffmvbt()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	CStaffMvDlg dlg;
+	dlg.DoModal();
+}
+
+
+void CWineShopManageDlg::OnBnClickedAttendinfomanage()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CStaffAttend dlg;
+	dlg.DoModal();
+}
+
+
+void CWineShopManageDlg::OnBnClickedFinancial()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CFinancialmanage dlg;
 	dlg.DoModal();
 }

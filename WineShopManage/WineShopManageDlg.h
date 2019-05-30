@@ -32,4 +32,6 @@ protected:
 public:
 //	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedStaffmvbt();
+	afx_msg void OnBnClickedAttendinfomanage();
+	afx_msg void OnBnClickedFinancial();
 };

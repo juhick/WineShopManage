@@ -42,7 +42,7 @@
 #include <tchar.h>
 
 
-
+#import "C:\Program Files\Common Files\system\ado\msado15.dll" no_namespace rename("EOF","adoEOF")
 
 
 

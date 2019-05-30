@@ -1,4 +1,5 @@
 #pragma once
+#include "d:\microsoft visual studio 10.0\vc\atlmfc\include\afxwin.h"
 
 
 // CStaffInfo ¶Ô»°¿ò
@@ -21,10 +22,11 @@ protected:
 public:
 	CString m_sEno;
 	CString m_sEname;
-	CString m_sJob;
-	CString m_sDept;
 	CString m_sJobInfo;
 	CString m_sJobEnv;
 	CString m_sJobTime;
 	afx_msg void OnPaint();
+	CComboBox m_sJobs;
+	CComboBox m_sDepts;
+	afx_msg void OnBnClickedStifbt();
 };

@@ -6,6 +6,7 @@
 #include "StaffInfo.h"
 #include "afxdialogex.h"
 #include "DBOperation.h"
+#include "StaffOtherInfo.h"
 
 
 // CStaffInfo 对话框
@@ -16,8 +17,6 @@ CStaffInfo::CStaffInfo(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CStaffInfo::IDD, pParent)
 	, m_sEno(_T(""))
 	, m_sEname(_T(""))
-	, m_sJob(_T(""))
-	, m_sDept(_T(""))
 	, m_sJobInfo(_T(""))
 	, m_sJobEnv(_T(""))
 	, m_sJobTime(_T(""))
@@ -32,24 +31,23 @@ CStaffInfo::~CStaffInfo()
 void CStaffInfo::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_EDIT1, m_sEno);
+	DDX_Text(pDX, IDC_ENO, m_sEno);
 	DDV_MaxChars(pDX, m_sEno, 4);
-	DDX_Text(pDX, IDC_EDIT4, m_sEname);
+	DDX_Text(pDX, IDC_ENAME, m_sEname);
 	DDV_MaxChars(pDX, m_sEname, 10);
-	DDX_Text(pDX, IDC_EDIT2, m_sJob);
-	DDV_MaxChars(pDX, m_sJob, 10);
-	DDX_Text(pDX, IDC_EDIT6, m_sDept);
-	DDV_MaxChars(pDX, m_sDept, 10);
-	DDX_Text(pDX, IDC_EDIT5, m_sJobInfo);
+	DDX_Text(pDX, IDC_JOBINFO, m_sJobInfo);
 	DDV_MaxChars(pDX, m_sJobInfo, 100);
-	DDX_Text(pDX, IDC_EDIT3, m_sJobEnv);
+	DDX_Text(pDX, IDC_JOBENV, m_sJobEnv);
 	DDV_MaxChars(pDX, m_sJobEnv, 20);
-	DDX_Text(pDX, IDC_EDIT7, m_sJobTime);
+	DDX_Text(pDX, IDC_JOBTIME, m_sJobTime);
+	DDX_Control(pDX, IDC_JOBS, m_sJobs);
+	DDX_Control(pDX, IDC_DEPTS, m_sDepts);
 }
 
 
 BEGIN_MESSAGE_MAP(CStaffInfo, CDialogEx)
 	ON_WM_PAINT()
+	ON_BN_CLICKED(IDC_STIFBT, &CStaffInfo::OnBnClickedStifbt)
 END_MESSAGE_MAP()
 
 
@@ -63,49 +61,84 @@ void CStaffInfo::OnPaint()
 	// 不为绘图消息调用 CDialogEx::OnPaint()
 	CWineShopManageApp *pApp = (CWineShopManageApp*)AfxGetApp();
 	m_sEno = pApp->staff.getEno();
-	CDBOperation dbOper;
 
-	bool bConn = dbOper.ConnToDB("Provider=OraOLEDB.Oracle;Persist Security Info=True;DataSource=\"(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = 183.175.14.198)(PORT = 7360)))(CONNECT_DATA =(SERVICE_NAME = OrHotel))\"","USER _5_4_2","123456");
-
-	if (bConn == false){
-		printf("连接据库出错\n");
-		system("pause");
-		return;
-	}
-	printf("数据库连接成功!\n");
 	_RecordsetPtr pRst;
+	CString sql;
 
-	char sql[255] = { 0 };
-	//执行查询语句
-	strcpy_s(sql, "select * from emp_job where eno = 1234");
+	sql = "SELECT ENAME, JOB, DEPT, JOBINFO, JOBENV, JOBTIME FROM EMP_JOB WHERE ENO = " + m_sEno;
 
-	pRst = dbOper.ExecuteWithResSQL(sql);
+	pRst = pApp->dbOper.ExecuteWithResSQL(_bstr_t(sql));
 
 	if (pRst == NULL){
-		printf("查询数据出现错误！\n");
-		system("pause");
-		return;
+		//AfxMessageBox("查询数据出现错误！");
 	}
 	if (pRst->adoEOF){
 		pRst->Close();
-		printf("There is no records in this table\n");
-		system("pause");
-		return;
+		//AfxMessageBox("There is no records in this table");
 	}
-	printf("正在查询...\n");
 
-	_variant_t eno, ename, job, dept, jobinfo, jobenv, jobtime;
+	m_sEname = pRst->GetCollect(_variant_t("ENAME"));
+	m_sJobs.AddString((CString)(pRst->GetCollect(_variant_t("JOB"))));
+	m_sJobs.SetCurSel(0);
+	m_sDepts.AddString((CString)pRst->GetCollect(_variant_t("DEPT"))) ;
+	m_sDepts.SetCurSel(0);
+	m_sJobInfo = pRst->GetCollect(_variant_t("JOBINFO"));
+	m_sJobEnv = pRst->GetCollect(_variant_t("JOBENV"));
+	m_sJobTime = pRst->GetCollect(_variant_t("JOBTIME"));
 
-	while (!pRst->adoEOF){
-		//eno = pRst->GetCollect(_variant_t((long)0));
-		ename = pRst->GetCollect(_variant_t("ename"));
-		job = pRst->GetCollect(_variant_t("job"));
-		jobinfo = pRst->GetCollect(_variant_t("jobinfo"));
-		jobenv = pRst->GetCollect(_variant_t("jobenv"));
-		jobtime = pRst->GetCollect(_variant_t("jobtime"));
-		printf("%s\t%s\t%s\t%s\t%s\t%s\n",(LPSTR)(LPCSTR)(_bstr_t)ename, (LPSTR)(LPCSTR)_bstr_t(job),(LPSTR)(LPCSTR)_bstr_t(dept),(LPSTR)(LPCSTR)(_bstr_t)jobinfo,(LPSTR)(LPCSTR)(_bstr_t)jobenv, (LPSTR)(LPCSTR)(_bstr_t)jobtime);
+	//pRst->Close();
+
+	CString JobNow;
+
+	m_sJobs.GetWindowText(JobNow);
+
+	sql.Format("SELECT DISTINCT JOB FROM EMP_JOB WHERE JOB != '%s'", JobNow);
+	pRst = pApp->dbOper.ExecuteWithResSQL((_bstr_t)sql);
+
+	while(!pRst->GetadoEOF()){
+		m_sJobs.AddString((CString)(pRst->GetCollect(_variant_t("JOB"))));
 		pRst->MoveNext();
 	}
+	
+	CString DeptNow;
+
+	m_sDepts.GetWindowText(DeptNow);
+
+	sql.Format("SELECT DISTINCT DEPT FROM EMP_JOB WHERE DEPT != '%s'", DeptNow);
+	pRst = pApp->dbOper.ExecuteWithResSQL((_bstr_t)sql);
+
+	while(!pRst->GetadoEOF()){
+		m_sDepts.AddString((CString)(pRst->GetCollect(_variant_t("DEPT"))));
+		pRst->MoveNext();
+	}
+
+	/*pRst->Close();
+	pRst->Release();*/
+
+	UpdateData(FALSE);
+	
+}
+
+
+void CStaffInfo::OnBnClickedStifbt()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CWineShopManageApp *pApp = (CWineShopManageApp*)AfxGetApp();
+	UpdateData(TRUE);
+	CString sql;
+
+	CString JobNow;
+	m_sJobs.GetWindowText(JobNow);
+	CString DeptNow;
+	m_sDepts.GetWindowText(DeptNow);
+
+	sql.Format("UPDATE EMP_JOB SET JOB = '%s', DEPT = '%s', JOBINFO = '%s', JOBENV = '%s', JOBTIME = '%s' WHERE ENO = '%s'", JobNow, DeptNow, m_sJobInfo, m_sJobEnv, m_sJobTime, m_sEno);
+	pApp->dbOper.ExecuteWithResSQL(_bstr_t(sql));
+	sql.Format("UPDATE EMP_OTHERINFO SET JOB = '%s', DEPT = '%s' WHERE ENO = '%s'", JobNow, DeptNow, m_sEno);
+	pApp->dbOper.ExecuteWithResSQL(_bstr_t(sql));
+
+	CStaffOtherInfo dlg;
+	dlg.DoModal();
 
 	UpdateData(FALSE);
 }

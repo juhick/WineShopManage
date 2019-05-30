@@ -15,8 +15,8 @@ public:
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
-	bool ConnToDB(char * ConnectionString, char * UserID, char * Password);
-	_RecordsetPtr ExecuteWithResSQL(const char * sql);
+	bool ConnToDB(_bstr_t ConnectionString, _bstr_t UserID, _bstr_t Password);
+	_RecordsetPtr ExecuteWithResSQL(_bstr_t sql);
 private:
 	void PrintErrorInfo(_com_error & e);
 	_ConnectionPtr CreateConnPtr(void);

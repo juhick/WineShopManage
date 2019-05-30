@@ -13,6 +13,7 @@ IMPLEMENT_DYNAMIC(CStaff, CWnd)
 CStaff::CStaff()
 {
 	m_sEno = "";
+	m_sEname = "";
 	m_sJob = "";
 	m_sJobEnv = "";
 	m_sJobInfo = "";
@@ -37,6 +38,10 @@ CString CStaff::getEno(void)
 	return m_sEno;
 }
 
+CString CStaff::getEname(void)
+{
+	return m_sEname;
+}
 
 CString CStaff::getJob(void)
 {
@@ -65,6 +70,11 @@ CString CStaff::getJobTime(void)
 void CStaff::setEno(CString Eno)
 {
 	m_sEno = Eno;
+}
+
+void CStaff::setEname(CString Ename)
+{
+	m_sEname = Ename;
 }
 
 void CStaff::setJob(CString Job)

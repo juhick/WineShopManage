@@ -33,9 +33,9 @@ END_MESSAGE_MAP()
 
 
 
-bool CDBOperation::ConnToDB(char * ConnectionString, char * UserID, char * Password)
+bool CDBOperation::ConnToDB(_bstr_t ConnectionString, _bstr_t UserID, _bstr_t Password)
 {
-	if (NULL ==m_pConnection)
+	if (NULL == m_pConnection)
 	{
 		printf("Failed to create connection\n");
 		return false;
@@ -60,7 +60,7 @@ bool CDBOperation::ConnToDB(char * ConnectionString, char * UserID, char * Passw
 }
 
 
-_RecordsetPtr CDBOperation::ExecuteWithResSQL(const char * sql)
+_RecordsetPtr CDBOperation::ExecuteWithResSQL(_bstr_t sql)
 {
 	//已经在连接至数据库的时候进行判断了
 	//if (NULL ==m_pCommand || 0 == m_pConnection->State)
@@ -90,8 +90,10 @@ _RecordsetPtr CDBOperation::ExecuteWithResSQL(const char * sql)
 
 void CDBOperation::PrintErrorInfo(_com_error & e)
 {
-	printf("Errorinfomation are as follows\n");
-	printf("ErrorNo:%d\nError Message:%s\nError Source:%s\nError Description:%s\n",e.Error(), e.ErrorMessage(), (LPCTSTR)e.Source(), (LPCTSTR)e.Description());
+	AfxMessageBox("Error information are as follows");
+	CString err;
+	err.Format("Error No:%d\nError Message:%s\nError Source:%s\nError Description:%s\n",e.Error(), e.ErrorMessage(), (LPCTSTR)e.Source(), (LPCTSTR)e.Description());
+	AfxMessageBox(err);
 }
 
 

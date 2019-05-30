@@ -10,6 +10,7 @@
 
 #include "resource.h"		// 主符号
 #include "Staff.h"
+#include "DBOperation.h"
 
 // CWineShopManageApp:
 // 有关此类的实现，请参阅 WineShopManage.cpp
@@ -29,6 +30,9 @@ public:
 	DECLARE_MESSAGE_MAP()
 public:
 	CStaff staff;
+	CDBOperation dbOper;
+	CString pNo;
+	CString pDept;
 };
 
 extern CWineShopManageApp theApp;
